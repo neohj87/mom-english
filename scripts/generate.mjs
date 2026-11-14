@@ -1,18 +1,24 @@
-// 매일 새 수업 하나를 Gemini로 만들어 data/lessons.json 에 추가합니다.
-// 사용법:  GEMINI_API_KEY=... node scripts/generate.mjs
+// 매일 새 수업 하나를 만들어 data/lessons.json 에 추가합니다.
+// Claude 를 먼저 쓰고, 안 되면 Gemini 로 만듭니다 (키가 있는 쪽만 사용).
+// 사용법:  ANTHROPIC_API_KEY=... GEMINI_API_KEY=... node scripts/generate.mjs
 // 옵션 환경변수:
-//   GEMINI_MODEL   사용할 모델 (기본 gemini-3.8-flash)
+//   CLAUDE_MODEL   Claude 모델 (기본 claude-opus-5-5)
+//   GEMINI_MODEL   Gemini 모델 (기본 gemini-3.8-flash)
 //   FORCE=1        오늘 수업이 이미 있어도 하나 더 만듦
 //   DRY_RUN=1      API 호출 없이 프롬프트만 출력
 //   MOCK_FILE=x    API 대신 이 JSON 파일을 응답으로 사용 (테스트용)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import Anthropic from "@anthropic-ai/sdk";
+import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
+import { z } from "zod";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CUR_PATH = path.join(ROOT, "data/curriculum.json");
 const LES_PATH = path.join(ROOT, "data/lessons.json");
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const CLAUDE_MODEL = process.env.CLAUDE_MODEL || "claude-opus-5-5";
 const SENTENCES = 6, WORDS = 5;
 
 const cur = JSON.parse(fs.readFileSync(CUR_PATH, "utf8"));
@@ -150,20 +156,69 @@ function clean(raw) {
   return { title, sentences, words };
 }
 
-let lesson, lastErr;
-let busyStreak = 0;
-for (let attempt = 1; attempt <= 7; attempt++) {
-  try { lesson = clean(await callGemini()); break; }
-  catch (e) {
-    lastErr = e;
-    console.warn(`시도 ${attempt} 실패 (${model}): ${e.message.split("\n").slice(0, 6).join(" ")}`);
-    if (e.name === "TimeoutError") { await switchModel(); continue; } // 응답이 너무 늦음
-    if (e.status === 404) { if (await switchModel()) continue; break; }         // 모델이 없어짐
-    if (e.status && e.status < 500 && e.status !== 429) break;                  // 키 오류 등은 재시도해도 소용없음
-    if (e.status) busyStreak++;
-    if (busyStreak >= 2 && await switchModel()) { busyStreak = 0; continue; }   // 같은 모델이 계속 붐비면 다른 모델로
-    await new Promise(r => setTimeout(r, Math.min(attempt, 3) * 20000));
+// ---------- Claude ----------
+const LessonSchema = z.object({
+  title: z.string(),
+  sentences: z.array(z.object({ en: z.string(), ko: z.string(), pr: z.string() })),
+  words: z.array(z.object({ en: z.string(), ko: z.string(), pr: z.string(), ex: z.string(), exKo: z.string() })),
+});
+
+async function runClaude() {
+  const client = new Anthropic({ timeout: 180000, maxRetries: 3 }); // ANTHROPIC_API_KEY 를 자동으로 읽음
+  let lastErr;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await client.beta.messages.parse({
+        model: CLAUDE_MODEL,
+        max_tokens: 16000,
+        betas: ["server-side-fallback-2026-07-01"],
+        fallbacks: "default", // 혹시 요청이 거절되면 서버가 알아서 다른 모델로 다시 시도
+        output_config: { effort: "medium", format: betaZodOutputFormat(LessonSchema) },
+        messages: [{ role: "user", content: prompt }],
+      });
+      if (res.stop_reason === "refusal") throw new Error(`Claude 가 요청을 거절했어요 (${res.stop_details?.category ?? "이유 없음"})`);
+      if (!res.parsed_output) throw new Error(`Claude 응답을 읽지 못했어요 (stop_reason: ${res.stop_reason})`);
+      usedModel = res.model || CLAUDE_MODEL;
+      return clean(res.parsed_output);
+    } catch (e) {
+      lastErr = e;
+      console.warn(`Claude 시도 ${attempt} 실패: ${e.message.split("\n")[0]}`);
+      if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError || e instanceof Anthropic.BadRequestError) break;
+    }
   }
+  throw lastErr;
+}
+
+// ---------- Gemini ----------
+async function runGemini() {
+  let lastErr, busyStreak = 0;
+  for (let attempt = 1; attempt <= 7; attempt++) {
+    try { const l = clean(await callGemini()); usedModel = model; return l; }
+    catch (e) {
+      lastErr = e;
+      console.warn(`Gemini 시도 ${attempt} 실패 (${model}): ${e.message.split("\n").slice(0, 6).join(" ")}`);
+      if (e.name === "TimeoutError") { await switchModel(); continue; } // 응답이 너무 늦음
+      if (e.status === 404) { if (await switchModel()) continue; break; }         // 모델이 없어짐
+      if (e.status && e.status < 500 && e.status !== 429) break;                  // 키 오류 등은 재시도해도 소용없음
+      if (e.status) busyStreak++;
+      if (busyStreak >= 2 && await switchModel()) { busyStreak = 0; continue; }   // 같은 모델이 계속 붐비면 다른 모델로
+      await new Promise(r => setTimeout(r, Math.min(attempt, 3) * 20000));
+    }
+  }
+  throw lastErr;
+}
+
+// ---------- 실행: Claude → Gemini 순서 ----------
+let usedModel = "";
+const providers = [];
+if (process.env.ANTHROPIC_API_KEY) providers.push(["Claude", runClaude]);
+if (process.env.GEMINI_API_KEY || process.env.MOCK_FILE) providers.push(["Gemini", runGemini]);
+if (!providers.length) { console.error("API 키가 없어요. GitHub Settings → Secrets 에 ANTHROPIC_API_KEY 또는 GEMINI_API_KEY 를 넣어 주세요."); process.exit(1); }
+
+let lesson, lastErr;
+for (const [name, run] of providers) {
+  try { lesson = await run(); break; }
+  catch (e) { lastErr = e; console.warn(`${name} 로는 못 만들었어요: ${e.message.split("\n")[0]}`); }
 }
 if (!lesson) { console.error(lastErr?.message); process.exit(1); }
 
@@ -172,4 +227,4 @@ const entry = { id: "L" + String(nextNum).padStart(3, "0"), step: step.step, lev
 db.lessons.push(entry);
 db.updated = today;
 fs.writeFileSync(LES_PATH, JSON.stringify(db, null, 1) + "\n");
-console.log(`[${model}] 새 수업 추가: ${entry.id} · ${step.step}단계 ${step.topic} · "${entry.title}" (문장 ${entry.sentences.length}, 단어 ${entry.words.length})`);
+console.log(`[${usedModel}] 새 수업 추가: ${entry.id} · ${step.step}단계 ${step.topic} · "${entry.title}" (문장 ${entry.sentences.length}, 단어 ${entry.words.length})`);

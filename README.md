@@ -1,6 +1,6 @@
 # 엄마 영어교실
 
-엄마를 위한 영어 공부 웹앱입니다. 매일 새벽 GitHub Actions가 Gemini 무료 API로 새 수업(문장 6개 + 단어 5개)을 하나씩 만들어 추가하고, GitHub Pages로 배포합니다.
+엄마를 위한 영어 공부 웹앱입니다. 매일 새벽 GitHub Actions가 Claude API로 새 수업(문장 6개 + 단어 5개)을 하나씩 만들어 추가하고 (Claude가 실패한 날은 Gemini 무료 API로 대신 만듦), GitHub Pages로 배포합니다.
 
 - 앱 주소: https://neohj87.github.io/mom-english/
 - 30단계 커리큘럼(레벨 1~3): `data/curriculum.json`
@@ -10,18 +10,20 @@
 
 ## 처음 설정 (한 번만)
 
-1. **Gemini API 키 넣기**: Settings → Secrets and variables → Actions → New repository secret
-   - Name: `GEMINI_API_KEY` / Value: Google AI Studio에서 받은 키
+1. **API 키 넣기**: Settings → Secrets and variables → Actions → New repository secret
+   - `ANTHROPIC_API_KEY`: Claude Console(console.claude.com)에서 받은 키 — 주로 사용
+   - `GEMINI_API_KEY`: Google AI Studio에서 받은 키 — Claude가 실패한 날 예비로 사용
+   - 둘 중 하나만 넣어도 동작합니다.
 2. **Pages 켜기**: Settings → Pages → Source를 **GitHub Actions**로 선택
 3. **처음 한 번 실행**: Actions 탭 → "매일 새 수업 만들고 배포" → Run workflow
 
-모델을 바꾸려면 Settings → Secrets and variables → Actions → Variables 에 `GEMINI_MODEL` 을 추가하세요 (기본값 `gemini-3.8-flash`).
+모델을 바꾸려면 Settings → Secrets and variables → Actions → Variables 에 `CLAUDE_MODEL` (기본값 `claude-opus-5-5`) 또는 `GEMINI_MODEL` (기본값 `gemini-3.8-flash`) 을 추가하세요. Claude는 하루 1회 호출이라 Opus 기준 한 달 약 2달러 정도 듭니다.
 
 ## 수업이 만들어지는 방식
 
 - 수업 수가 가장 적은 단계부터 채웁니다. 30단계를 한 바퀴 돈 뒤에는 1단계부터 새 문장으로 두 번째 수업을 만듭니다.
 - 이미 나온 문장·단어는 다시 나오지 않게 걸러냅니다.
-- 하루에 한 번만 만들어집니다. 직접 하나 더 만들려면 로컬에서 `FORCE=1 GEMINI_API_KEY=... node scripts/generate.mjs`.
+- 하루에 한 번만 만들어집니다. 직접 하나 더 만들려면 로컬에서 `npm ci` 후 `FORCE=1 ANTHROPIC_API_KEY=... node scripts/generate.mjs`.
 - 수업이 잘못 만들어졌다면 `data/lessons.json` 에서 그 수업을 지우거나 고치면 됩니다.
 
 ## 공부 기록
