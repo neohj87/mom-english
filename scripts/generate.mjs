@@ -84,7 +84,7 @@ let backups = null; // 다른 모델 후보 (필요할 때 한 번만 조회)
 
 // 지금 쓸 수 있는 Flash 모델 목록: 최신 Flash 먼저, 그다음 Flash-Lite
 async function listFlashModels(key) {
-  const res = await fetch(`${API}/models?pageSize=200`, { headers: { "x-goog-api-key": key } });
+  const res = await fetch(`${API}/models?pageSize=200`, { signal: AbortSignal.timeout(30000), headers: { "x-goog-api-key": key } });
   if (!res.ok) return [];
   const names = ((await res.json()).models || [])
     .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
@@ -99,7 +99,7 @@ async function listFlashModels(key) {
 async function switchModel() {
   const key = process.env.GEMINI_API_KEY;
   if (!key) return false;
-  if (!backups) backups = await listFlashModels(key);
+  if (!backups) backups = await listFlashModels(key).catch(() => []);
   backups = backups.filter(n => n !== model && n !== MODEL);
   const next = backups.shift();
   if (!next) return false;
@@ -117,6 +117,7 @@ async function callGemini() {
 
 async function requestLesson(key) {
   const res = await fetch(`${API}/models/${model}:generateContent`, {
+    signal: AbortSignal.timeout(120000), // 2분 안에 답이 없으면 포기하고 다시 시도
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": key },
     body: JSON.stringify({
@@ -156,6 +157,7 @@ for (let attempt = 1; attempt <= 7; attempt++) {
   catch (e) {
     lastErr = e;
     console.warn(`시도 ${attempt} 실패 (${model}): ${e.message.split("\n").slice(0, 6).join(" ")}`);
+    if (e.name === "TimeoutError") { await switchModel(); continue; } // 응답이 너무 늦음
     if (e.status === 404) { if (await switchModel()) continue; break; }         // 모델이 없어짐
     if (e.status && e.status < 500 && e.status !== 429) break;                  // 키 오류 등은 재시도해도 소용없음
     if (e.status) busyStreak++;
