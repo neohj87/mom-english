@@ -80,35 +80,39 @@ if (process.env.DRY_RUN) { console.log(prompt); process.exit(0); }
 
 const API = "https://generativelanguage.googleapis.com/v1beta";
 let model = MODEL;
-let triedDiscovery = false;
+let backups = null; // 다른 모델 후보 (필요할 때 한 번만 조회)
 
-// 쓰던 모델이 없어졌을 때: 지금 쓸 수 있는 Flash 모델 중 가장 최신을 고름
-async function discoverModel(key) {
+// 지금 쓸 수 있는 Flash 모델 목록: 최신 Flash 먼저, 그다음 Flash-Lite
+async function listFlashModels(key) {
   const res = await fetch(`${API}/models?pageSize=200`, { headers: { "x-goog-api-key": key } });
-  if (!res.ok) return null;
+  if (!res.ok) return [];
   const names = ((await res.json()).models || [])
     .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
     .map(m => m.name.replace(/^models\//, ""))
-    .filter(n => /^gemini-[\d.]+-flash$/.test(n));
+    .filter(n => /^gemini-[\d.]+-flash(-lite)?$/.test(n));
   const ver = n => n.match(/[\d.]+/)[0].split(".").map(Number);
-  names.sort((a, b) => { const x = ver(a), y = ver(b); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (y[i] || 0) - (x[i] || 0); return 0; });
-  return names[0] || null;
+  const cmp = (a, b) => { const x = ver(a), y = ver(b); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (y[i] || 0) - (x[i] || 0); return 0; };
+  return [...names.filter(n => !n.endsWith("-lite")).sort(cmp), ...names.filter(n => n.endsWith("-lite")).sort(cmp)];
+}
+
+// 지금 모델이 없어졌거나 계속 붐빌 때 다음 후보로 바꿈. 바꿀 게 없으면 false
+async function switchModel() {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) return false;
+  if (!backups) backups = await listFlashModels(key);
+  backups = backups.filter(n => n !== model && n !== MODEL);
+  const next = backups.shift();
+  if (!next) return false;
+  console.warn(`모델을 ${model} → ${next} 로 바꿔서 다시 해볼게요.`);
+  model = next;
+  return true;
 }
 
 async function callGemini() {
   if (process.env.MOCK_FILE) return JSON.parse(fs.readFileSync(process.env.MOCK_FILE, "utf8"));
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new Error("GEMINI_API_KEY 가 없어요. GitHub 저장소 Settings → Secrets 에 넣어 주세요.");
-  try { return await requestLesson(key); }
-  catch (e) {
-    if (e.status !== 404 || triedDiscovery) throw e;
-    triedDiscovery = true;
-    const found = await discoverModel(key);
-    if (!found || found === model) throw e;
-    console.warn(`모델 ${model} 을(를) 쓸 수 없어 ${found} 로 바꿔요.`);
-    model = found;
-    return await requestLesson(key);
-  }
+  return requestLesson(key);
 }
 
 async function requestLesson(key) {
@@ -146,13 +150,17 @@ function clean(raw) {
 }
 
 let lesson, lastErr;
-for (let attempt = 1; attempt <= 4; attempt++) {
+let busyStreak = 0;
+for (let attempt = 1; attempt <= 7; attempt++) {
   try { lesson = clean(await callGemini()); break; }
   catch (e) {
     lastErr = e;
-    console.warn(`시도 ${attempt} 실패: ${e.message}`);
-    if (e.status && e.status < 500 && e.status !== 429) break; // 키 오류 등은 재시도해도 소용없음
-    await new Promise(r => setTimeout(r, attempt * 15000));
+    console.warn(`시도 ${attempt} 실패 (${model}): ${e.message.split("\n").slice(0, 6).join(" ")}`);
+    if (e.status === 404) { if (await switchModel()) continue; break; }         // 모델이 없어짐
+    if (e.status && e.status < 500 && e.status !== 429) break;                  // 키 오류 등은 재시도해도 소용없음
+    if (e.status) busyStreak++;
+    if (busyStreak >= 2 && await switchModel()) { busyStreak = 0; continue; }   // 같은 모델이 계속 붐비면 다른 모델로
+    await new Promise(r => setTimeout(r, Math.min(attempt, 3) * 20000));
   }
 }
 if (!lesson) { console.error(lastErr?.message); process.exit(1); }
