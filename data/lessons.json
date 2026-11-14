@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-15",
  "lessons": [
   {
    "id": "L001",
@@ -537,6 +537,83 @@
      "pr": "카운트",
      "ex": "Please count this.",
      "exKo": "이것을 세어 주세요."
+    }
+   ]
+  },
+  {
+   "id": "L008",
+   "step": 8,
+   "level": 1,
+   "topic": "시간과 요일",
+   "date": "2026-11-15",
+   "title": "시간과 요일 말하기",
+   "sentences": [
+    {
+     "en": "It is nine o'clock.",
+     "ko": "지금 9시예요.",
+     "pr": "잇 이즈 나인 어클락."
+    },
+    {
+     "en": "It is Monday.",
+     "ko": "월요일이에요.",
+     "pr": "잇 이즈 먼데이."
+    },
+    {
+     "en": "See you on Monday.",
+     "ko": "월요일에 봐요.",
+     "pr": "시 유 온 먼데이."
+    },
+    {
+     "en": "We meet at two.",
+     "ko": "우리는 2시에 만나요.",
+     "pr": "위 미트 애트 투."
+    },
+    {
+     "en": "Is it five o'clock?",
+     "ko": "5시인가요?",
+     "pr": "이즈 잇 파이브 어클락?"
+    },
+    {
+     "en": "Have a good weekend.",
+     "ko": "좋은 주말 보내세요.",
+     "pr": "해브 어 굿 위켄드."
+    }
+   ],
+   "words": [
+    {
+     "en": "time",
+     "ko": "시간",
+     "pr": "타임",
+     "ex": "It is time.",
+     "exKo": "시간이에요."
+    },
+    {
+     "en": "clock",
+     "ko": "시계",
+     "pr": "클락",
+     "ex": "Look at the clock.",
+     "exKo": "시계를 보세요."
+    },
+    {
+     "en": "Monday",
+     "ko": "월요일",
+     "pr": "먼데이",
+     "ex": "It is Monday.",
+     "exKo": "월요일이에요."
+    },
+    {
+     "en": "weekend",
+     "ko": "주말",
+     "pr": "위켄드",
+     "ex": "Enjoy your weekend.",
+     "exKo": "주말을 즐기세요."
+    },
+    {
+     "en": "minute",
+     "ko": "분",
+     "pr": "미닛",
+     "ex": "Wait a minute.",
+     "exKo": "잠시만 기다려주세요."
     }
    ]
   }
