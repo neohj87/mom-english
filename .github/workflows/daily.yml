@@ -41,6 +41,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/lessons.json
           git commit -m "새 수업 추가 ($(TZ=Asia/Seoul date +%F))"
+          git pull --rebase origin main
           git push
 
   deploy:
