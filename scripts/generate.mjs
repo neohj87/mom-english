@@ -1,7 +1,7 @@
 // 매일 새 수업 하나를 Gemini로 만들어 data/lessons.json 에 추가합니다.
 // 사용법:  GEMINI_API_KEY=... node scripts/generate.mjs
 // 옵션 환경변수:
-//   GEMINI_MODEL   사용할 모델 (기본 gemini-2.5-flash)
+//   GEMINI_MODEL   사용할 모델 (기본 gemini-3.8-flash)
 //   FORCE=1        오늘 수업이 이미 있어도 하나 더 만듦
 //   DRY_RUN=1      API 호출 없이 프롬프트만 출력
 //   MOCK_FILE=x    API 대신 이 JSON 파일을 응답으로 사용 (테스트용)
@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CUR_PATH = path.join(ROOT, "data/curriculum.json");
 const LES_PATH = path.join(ROOT, "data/lessons.json");
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 const SENTENCES = 6, WORDS = 5;
 
 const cur = JSON.parse(fs.readFileSync(CUR_PATH, "utf8"));
@@ -78,11 +78,41 @@ const schema = {
 
 if (process.env.DRY_RUN) { console.log(prompt); process.exit(0); }
 
+const API = "https://generativelanguage.googleapis.com/v1beta";
+let model = MODEL;
+let triedDiscovery = false;
+
+// 쓰던 모델이 없어졌을 때: 지금 쓸 수 있는 Flash 모델 중 가장 최신을 고름
+async function discoverModel(key) {
+  const res = await fetch(`${API}/models?pageSize=200`, { headers: { "x-goog-api-key": key } });
+  if (!res.ok) return null;
+  const names = ((await res.json()).models || [])
+    .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
+    .map(m => m.name.replace(/^models\//, ""))
+    .filter(n => /^gemini-[\d.]+-flash$/.test(n));
+  const ver = n => n.match(/[\d.]+/)[0].split(".").map(Number);
+  names.sort((a, b) => { const x = ver(a), y = ver(b); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (y[i] || 0) - (x[i] || 0); return 0; });
+  return names[0] || null;
+}
+
 async function callGemini() {
   if (process.env.MOCK_FILE) return JSON.parse(fs.readFileSync(process.env.MOCK_FILE, "utf8"));
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new Error("GEMINI_API_KEY 가 없어요. GitHub 저장소 Settings → Secrets 에 넣어 주세요.");
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
+  try { return await requestLesson(key); }
+  catch (e) {
+    if (e.status !== 404 || triedDiscovery) throw e;
+    triedDiscovery = true;
+    const found = await discoverModel(key);
+    if (!found || found === model) throw e;
+    console.warn(`모델 ${model} 을(를) 쓸 수 없어 ${found} 로 바꿔요.`);
+    model = found;
+    return await requestLesson(key);
+  }
+}
+
+async function requestLesson(key) {
+  const res = await fetch(`${API}/models/${model}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": key },
     body: JSON.stringify({
@@ -132,4 +162,4 @@ const entry = { id: "L" + String(nextNum).padStart(3, "0"), step: step.step, lev
 db.lessons.push(entry);
 db.updated = today;
 fs.writeFileSync(LES_PATH, JSON.stringify(db, null, 1) + "\n");
-console.log(`새 수업 추가: ${entry.id} · ${step.step}단계 ${step.topic} · "${entry.title}" (문장 ${entry.sentences.length}, 단어 ${entry.words.length})`);
+console.log(`[${model}] 새 수업 추가: ${entry.id} · ${step.step}단계 ${step.topic} · "${entry.title}" (문장 ${entry.sentences.length}, 단어 ${entry.words.length})`);

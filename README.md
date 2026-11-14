@@ -15,7 +15,7 @@
 2. **Pages 켜기**: Settings → Pages → Source를 **GitHub Actions**로 선택
 3. **처음 한 번 실행**: Actions 탭 → "매일 새 수업 만들고 배포" → Run workflow
 
-모델을 바꾸려면 Settings → Secrets and variables → Actions → Variables 에 `GEMINI_MODEL` 을 추가하세요 (기본값 `gemini-2.5-flash`).
+모델을 바꾸려면 Settings → Secrets and variables → Actions → Variables 에 `GEMINI_MODEL` 을 추가하세요 (기본값 `gemini-3.8-flash`).
 
 ## 수업이 만들어지는 방식
 
