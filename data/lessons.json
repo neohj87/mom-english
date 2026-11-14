@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-14",
  "lessons": [
   {
    "id": "L001",
@@ -460,6 +460,83 @@
      "pr": "웨더",
      "ex": "The weather is cold.",
      "exKo": "날씨가 추워요."
+    }
+   ]
+  },
+  {
+   "id": "L007",
+   "step": 7,
+   "level": 1,
+   "topic": "숫자와 돈",
+   "date": "2026-11-14",
+   "title": "숫자와 돈 표현하기",
+   "sentences": [
+    {
+     "en": "It is ten dollars.",
+     "ko": "이것은 10달러예요.",
+     "pr": "잇 이즈 텐 달러스."
+    },
+    {
+     "en": "I have five dollars.",
+     "ko": "저는 5달러가 있어요.",
+     "pr": "아이 해브 파이브 달러스."
+    },
+    {
+     "en": "Keep the change, please.",
+     "ko": "거스름돈은 가지세요.",
+     "pr": "킵 더 체인지, 플리즈."
+    },
+    {
+     "en": "I need three bags.",
+     "ko": "저는 봉지 세 개가 필요해요.",
+     "pr": "아이 니드 쓰리 백스."
+    },
+    {
+     "en": "Is it twenty dollars?",
+     "ko": "20달러인가요?",
+     "pr": "이즈 잇 트웬티 달러스?"
+    },
+    {
+     "en": "Here is your change.",
+     "ko": "여기 거스름돈 있어요.",
+     "pr": "히어 이즈 유어 체인지."
+    }
+   ],
+   "words": [
+    {
+     "en": "dollar",
+     "ko": "달러",
+     "pr": "달러",
+     "ex": "One dollar, please.",
+     "exKo": "1달러 주세요."
+    },
+    {
+     "en": "change",
+     "ko": "거스름돈",
+     "pr": "체인지",
+     "ex": "Here is your change.",
+     "exKo": "여기 거스름돈 있어요."
+    },
+    {
+     "en": "cash",
+     "ko": "현금",
+     "pr": "캐시",
+     "ex": "I have cash.",
+     "exKo": "저는 현금이 있어요."
+    },
+    {
+     "en": "total",
+     "ko": "총액, 합계",
+     "pr": "토털",
+     "ex": "The total is ten.",
+     "exKo": "총 10달러예요."
+    },
+    {
+     "en": "count",
+     "ko": "세다",
+     "pr": "카운트",
+     "ex": "Please count this.",
+     "exKo": "이것을 세어 주세요."
     }
    ]
   }
