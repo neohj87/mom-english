@@ -1,0 +1,40 @@
+{
+  "lessonsPerStep": 2,
+  "levels": {
+    "1": { "name": "첫걸음", "guide": "3~5 words per sentence. Only the most common everyday words. Present tense. Polite set phrases a beginner can memorize whole." },
+    "2": { "name": "한 걸음 더", "guide": "4~8 words per sentence. Common verbs (want, need, have, go, like), simple questions with what/where/when/how, can/could requests. Present and simple past." },
+    "3": { "name": "자신 있게", "guide": "6~12 words per sentence. Natural spoken English with I'd like / Would you / I'm going to / I've been. Short two-person exchanges are fine." }
+  },
+  "steps": [
+    { "step": 1,  "level": 1, "topic": "인사", "focus": "greetings, thanks, goodbyes" },
+    { "step": 2,  "level": 1, "topic": "카페·식당", "focus": "ordering drinks and food, asking for the bill" },
+    { "step": 3,  "level": 1, "topic": "쇼핑", "focus": "prices, sizes, paying" },
+    { "step": 4,  "level": 1, "topic": "여행·공항", "focus": "restroom, taxi, asking someone to speak slowly" },
+    { "step": 5,  "level": 1, "topic": "병원·약국", "focus": "saying where it hurts, buying medicine" },
+    { "step": 6,  "level": 1, "topic": "가족·일상", "focus": "introducing family, daily life" },
+    { "step": 7,  "level": 1, "topic": "숫자와 돈", "focus": "numbers 1-100, prices, counting things" },
+    { "step": 8,  "level": 1, "topic": "시간과 요일", "focus": "telling time, days of the week, today/tomorrow" },
+    { "step": 9,  "level": 1, "topic": "날씨와 계절", "focus": "weather talk, seasons, hot/cold" },
+    { "step": 10, "level": 1, "topic": "기분 말하기", "focus": "happy, tired, hungry, worried, excited" },
+    { "step": 11, "level": 2, "topic": "자기소개", "focus": "name, where I live, my hobbies, my job" },
+    { "step": 12, "level": 2, "topic": "길 묻기", "focus": "directions, left/right, near/far" },
+    { "step": 13, "level": 2, "topic": "대중교통", "focus": "bus, subway, tickets, which stop" },
+    { "step": 14, "level": 2, "topic": "호텔", "focus": "check-in, towels, wifi, breakfast time" },
+    { "step": 15, "level": 2, "topic": "식당 심화", "focus": "reservations, recommendations, allergies, spicy/not spicy" },
+    { "step": 16, "level": 2, "topic": "마트·시장", "focus": "fruit, vegetables, quantities, bags" },
+    { "step": 17, "level": 2, "topic": "전화·영상통화", "focus": "calling family abroad, can you hear me, call you back" },
+    { "step": 18, "level": 2, "topic": "취미", "focus": "walking, cooking, gardening, TV shows" },
+    { "step": 19, "level": 2, "topic": "요리", "focus": "recipes, cut/boil/mix, tastes" },
+    { "step": 20, "level": 2, "topic": "손주와 대화", "focus": "praising, playing, bedtime, simple questions to a child" },
+    { "step": 21, "level": 3, "topic": "여행 계획", "focus": "talking about trip plans with I'm going to" },
+    { "step": 22, "level": 3, "topic": "공항 심화", "focus": "check-in counter, baggage, immigration questions" },
+    { "step": 23, "level": 3, "topic": "부탁과 거절", "focus": "polite requests and polite no" },
+    { "step": 24, "level": 3, "topic": "건강 이야기", "focus": "describing symptoms, how long, doctor's advice" },
+    { "step": 25, "level": 3, "topic": "이웃과 스몰토크", "focus": "small talk with neighbors and other parents" },
+    { "step": 26, "level": 3, "topic": "추억 이야기", "focus": "simple past stories, when I was young" },
+    { "step": 27, "level": 3, "topic": "칭찬과 감사", "focus": "compliments, thanking warmly, responding to thanks" },
+    { "step": 28, "level": 3, "topic": "문제 해결", "focus": "lost item, wrong order, asking for help" },
+    { "step": 29, "level": 3, "topic": "특별한 날", "focus": "birthdays, holidays, congratulations" },
+    { "step": 30, "level": 3, "topic": "나의 하루", "focus": "describing my day from morning to night" }
+  ]
+}

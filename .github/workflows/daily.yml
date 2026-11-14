@@ -1,0 +1,58 @@
+name: 매일 새 수업 만들고 배포
+
+on:
+  schedule:
+    - cron: "17 19 * * *"   # 매일 한국시간 새벽 4시 17분
+  workflow_dispatch:         # Actions 탭에서 직접 실행 가능
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-lesson
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Gemini로 오늘 수업 만들기
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: node scripts/generate.mjs
+      - name: 저장
+        run: |
+          if git diff --quiet; then echo "변경 없음"; exit 0; fi
+          git config user.name "lesson-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lessons.json
+          git commit -m "새 수업 추가 ($(TZ=Asia/Seoul date +%F))"
+          git push
+
+  deploy:
+    needs: generate
+    if: always() && (needs.generate.result == 'success' || needs.generate.result == 'skipped')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

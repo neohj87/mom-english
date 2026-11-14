@@ -1,0 +1,467 @@
+{
+ "updated": "2026-11-01",
+ "lessons": [
+  {
+   "id": "L001",
+   "step": 1,
+   "level": 1,
+   "topic": "인사",
+   "date": "2026-11-01",
+   "title": "인사 기본 표현",
+   "sentences": [
+    {
+     "en": "Good morning.",
+     "ko": "좋은 아침이에요.",
+     "pr": "굿 모닝"
+    },
+    {
+     "en": "How are you?",
+     "ko": "어떻게 지내세요?",
+     "pr": "하우 아 유?"
+    },
+    {
+     "en": "Nice to meet you.",
+     "ko": "만나서 반가워요.",
+     "pr": "나이스 투 밋 유"
+    },
+    {
+     "en": "Thank you so much.",
+     "ko": "정말 고마워요.",
+     "pr": "땡큐 쏘 머치"
+    },
+    {
+     "en": "See you later.",
+     "ko": "나중에 봐요.",
+     "pr": "씨 유 레이러"
+    },
+    {
+     "en": "Have a nice day.",
+     "ko": "좋은 하루 보내세요.",
+     "pr": "해버 나이스 데이"
+    }
+   ],
+   "words": [
+    {
+     "en": "hello",
+     "ko": "안녕하세요",
+     "pr": "헬로우",
+     "ex": "Hello, everyone.",
+     "exKo": "안녕하세요, 여러분."
+    },
+    {
+     "en": "friend",
+     "ko": "친구",
+     "pr": "프렌드",
+     "ex": "She is my friend.",
+     "exKo": "그녀는 제 친구예요."
+    },
+    {
+     "en": "happy",
+     "ko": "행복한",
+     "pr": "해피",
+     "ex": "I'm so happy.",
+     "exKo": "정말 행복해요."
+    },
+    {
+     "en": "today",
+     "ko": "오늘",
+     "pr": "투데이",
+     "ex": "It's hot today.",
+     "exKo": "오늘 더워요."
+    },
+    {
+     "en": "tomorrow",
+     "ko": "내일",
+     "pr": "투마로우",
+     "ex": "See you tomorrow.",
+     "exKo": "내일 봐요."
+    }
+   ]
+  },
+  {
+   "id": "L002",
+   "step": 2,
+   "level": 1,
+   "topic": "카페·식당",
+   "date": "2026-11-01",
+   "title": "카페·식당 기본 표현",
+   "sentences": [
+    {
+     "en": "Can I see the menu, please?",
+     "ko": "메뉴판 좀 볼 수 있을까요?",
+     "pr": "캔 아이 씨 더 메뉴, 플리즈?"
+    },
+    {
+     "en": "I'd like a cup of coffee.",
+     "ko": "커피 한 잔 주세요.",
+     "pr": "아이드 라이커 컵 오브 커피"
+    },
+    {
+     "en": "Not too sweet, please.",
+     "ko": "너무 달지 않게 해 주세요.",
+     "pr": "낫 투 스윗, 플리즈"
+    },
+    {
+     "en": "Can I get this to go?",
+     "ko": "이거 포장되나요?",
+     "pr": "캔 아이 겟 디스 투 고?"
+    },
+    {
+     "en": "The check, please.",
+     "ko": "계산서 주세요.",
+     "pr": "더 첵, 플리즈"
+    },
+    {
+     "en": "It was delicious.",
+     "ko": "정말 맛있었어요.",
+     "pr": "잇 워즈 딜리셔스"
+    }
+   ],
+   "words": [
+    {
+     "en": "water",
+     "ko": "물",
+     "pr": "워터",
+     "ex": "Water, please.",
+     "exKo": "물 주세요."
+    },
+    {
+     "en": "coffee",
+     "ko": "커피",
+     "pr": "커피",
+     "ex": "I like coffee.",
+     "exKo": "저는 커피를 좋아해요."
+    },
+    {
+     "en": "bill",
+     "ko": "계산서",
+     "pr": "빌",
+     "ex": "Can I have the bill?",
+     "exKo": "계산서 주시겠어요?"
+    },
+    {
+     "en": "delicious",
+     "ko": "맛있는",
+     "pr": "딜리셔스",
+     "ex": "This is delicious.",
+     "exKo": "이거 맛있어요."
+    },
+    {
+     "en": "lunch",
+     "ko": "점심",
+     "pr": "런치",
+     "ex": "Let's have lunch.",
+     "exKo": "점심 먹어요."
+    }
+   ]
+  },
+  {
+   "id": "L003",
+   "step": 3,
+   "level": 1,
+   "topic": "쇼핑",
+   "date": "2026-11-01",
+   "title": "쇼핑 기본 표현",
+   "sentences": [
+    {
+     "en": "How much is this?",
+     "ko": "이거 얼마예요?",
+     "pr": "하우 머치 이즈 디스?"
+    },
+    {
+     "en": "Do you have a smaller size?",
+     "ko": "더 작은 사이즈 있나요?",
+     "pr": "두 유 해버 스몰러 사이즈?"
+    },
+    {
+     "en": "Can I try this on?",
+     "ko": "이거 입어 봐도 돼요?",
+     "pr": "캔 아이 트라이 디스 온?"
+    },
+    {
+     "en": "I'm just looking.",
+     "ko": "그냥 구경하는 중이에요.",
+     "pr": "아임 저스트 루킹"
+    },
+    {
+     "en": "Can I pay by card?",
+     "ko": "카드로 계산해도 되나요?",
+     "pr": "캔 아이 페이 바이 카드?"
+    },
+    {
+     "en": "I'll take it.",
+     "ko": "이걸로 할게요.",
+     "pr": "아일 테이킷"
+    }
+   ],
+   "words": [
+    {
+     "en": "expensive",
+     "ko": "비싼",
+     "pr": "익스펜시브",
+     "ex": "It's too expensive.",
+     "exKo": "너무 비싸요."
+    },
+    {
+     "en": "cheap",
+     "ko": "싼",
+     "pr": "칩",
+     "ex": "This is cheap.",
+     "exKo": "이거 싸네요."
+    },
+    {
+     "en": "size",
+     "ko": "크기, 사이즈",
+     "pr": "사이즈",
+     "ex": "What size is this?",
+     "exKo": "이건 무슨 사이즈예요?"
+    },
+    {
+     "en": "card",
+     "ko": "카드",
+     "pr": "카드",
+     "ex": "Here is my card.",
+     "exKo": "제 카드 여기 있어요."
+    },
+    {
+     "en": "beautiful",
+     "ko": "아름다운",
+     "pr": "뷰티풀",
+     "ex": "What a beautiful bag!",
+     "exKo": "가방 정말 예쁘네요!"
+    }
+   ]
+  },
+  {
+   "id": "L004",
+   "step": 4,
+   "level": 1,
+   "topic": "여행·공항",
+   "date": "2026-11-01",
+   "title": "여행·공항 기본 표현",
+   "sentences": [
+    {
+     "en": "Where is the restroom?",
+     "ko": "화장실이 어디예요?",
+     "pr": "웨어 이즈 더 레스트룸?"
+    },
+    {
+     "en": "I'm here on vacation.",
+     "ko": "휴가로 왔어요.",
+     "pr": "아임 히어 온 베케이션"
+    },
+    {
+     "en": "Could you take a picture for us?",
+     "ko": "사진 좀 찍어 주시겠어요?",
+     "pr": "쿠쥬 테이커 픽처 포 어스?"
+    },
+    {
+     "en": "How do I get to this hotel?",
+     "ko": "이 호텔에 어떻게 가요?",
+     "pr": "하우 두 아이 겟 투 디스 호텔?"
+    },
+    {
+     "en": "Please speak slowly.",
+     "ko": "천천히 말씀해 주세요.",
+     "pr": "플리즈 스픽 슬로울리"
+    },
+    {
+     "en": "Where can I take a taxi?",
+     "ko": "택시는 어디서 타요?",
+     "pr": "웨어 캔 아이 테이커 택시?"
+    }
+   ],
+   "words": [
+    {
+     "en": "restroom",
+     "ko": "화장실",
+     "pr": "레스트룸",
+     "ex": "Where is the restroom?",
+     "exKo": "화장실이 어디예요?"
+    },
+    {
+     "en": "airport",
+     "ko": "공항",
+     "pr": "에어포트",
+     "ex": "I'm at the airport.",
+     "exKo": "저 공항에 있어요."
+    },
+    {
+     "en": "ticket",
+     "ko": "표, 티켓",
+     "pr": "티켓",
+     "ex": "One ticket, please.",
+     "exKo": "표 한 장 주세요."
+    },
+    {
+     "en": "passport",
+     "ko": "여권",
+     "pr": "패스포트",
+     "ex": "Here is my passport.",
+     "exKo": "제 여권 여기 있어요."
+    },
+    {
+     "en": "slowly",
+     "ko": "천천히",
+     "pr": "슬로울리",
+     "ex": "Please walk slowly.",
+     "exKo": "천천히 걸어 주세요."
+    }
+   ]
+  },
+  {
+   "id": "L005",
+   "step": 5,
+   "level": 1,
+   "topic": "병원·약국",
+   "date": "2026-11-01",
+   "title": "병원·약국 기본 표현",
+   "sentences": [
+    {
+     "en": "I have a headache.",
+     "ko": "머리가 아파요.",
+     "pr": "아이 해버 헤데익"
+    },
+    {
+     "en": "I don't feel well.",
+     "ko": "몸이 안 좋아요.",
+     "pr": "아이 돈 필 웰"
+    },
+    {
+     "en": "I need some cold medicine.",
+     "ko": "감기약이 필요해요.",
+     "pr": "아이 니드 썸 콜드 메디슨"
+    },
+    {
+     "en": "My stomach hurts.",
+     "ko": "배가 아파요.",
+     "pr": "마이 스터먹 허츠"
+    },
+    {
+     "en": "I'm allergic to this.",
+     "ko": "저는 이것에 알레르기가 있어요.",
+     "pr": "아임 얼러직 투 디스"
+    },
+    {
+     "en": "How often should I take it?",
+     "ko": "얼마나 자주 먹어야 해요?",
+     "pr": "하우 오픈 슈다이 테이킷?"
+    }
+   ],
+   "words": [
+    {
+     "en": "hospital",
+     "ko": "병원",
+     "pr": "하스피럴",
+     "ex": "Where is the hospital?",
+     "exKo": "병원이 어디예요?"
+    },
+    {
+     "en": "medicine",
+     "ko": "약",
+     "pr": "메디슨",
+     "ex": "I need medicine.",
+     "exKo": "약이 필요해요."
+    },
+    {
+     "en": "headache",
+     "ko": "두통",
+     "pr": "헤데익",
+     "ex": "I have a headache.",
+     "exKo": "두통이 있어요."
+    },
+    {
+     "en": "tired",
+     "ko": "피곤한",
+     "pr": "타이어드",
+     "ex": "I'm a little tired.",
+     "exKo": "조금 피곤해요."
+    },
+    {
+     "en": "help",
+     "ko": "도움, 도와주다",
+     "pr": "헬프",
+     "ex": "Can you help me?",
+     "exKo": "저 좀 도와주실래요?"
+    }
+   ]
+  },
+  {
+   "id": "L006",
+   "step": 6,
+   "level": 1,
+   "topic": "가족·일상",
+   "date": "2026-11-01",
+   "title": "가족·일상 기본 표현",
+   "sentences": [
+    {
+     "en": "This is my son.",
+     "ko": "제 아들이에요.",
+     "pr": "디스 이즈 마이 썬"
+    },
+    {
+     "en": "I have two children.",
+     "ko": "아이가 둘 있어요.",
+     "pr": "아이 해브 투 칠드런"
+    },
+    {
+     "en": "I'm learning English.",
+     "ko": "영어를 배우고 있어요.",
+     "pr": "아임 러닝 잉글리시"
+    },
+    {
+     "en": "What time is it now?",
+     "ko": "지금 몇 시예요?",
+     "pr": "왓 타임 이즈 잇 나우?"
+    },
+    {
+     "en": "The weather is nice today.",
+     "ko": "오늘 날씨가 좋네요.",
+     "pr": "더 웨더 이즈 나이스 투데이"
+    },
+    {
+     "en": "I'm proud of you.",
+     "ko": "네가 자랑스러워.",
+     "pr": "아임 프라우드 오브 유"
+    }
+   ],
+   "words": [
+    {
+     "en": "family",
+     "ko": "가족",
+     "pr": "패밀리",
+     "ex": "I love my family.",
+     "exKo": "저는 가족을 사랑해요."
+    },
+    {
+     "en": "daughter",
+     "ko": "딸",
+     "pr": "도터",
+     "ex": "This is my daughter.",
+     "exKo": "제 딸이에요."
+    },
+    {
+     "en": "son",
+     "ko": "아들",
+     "pr": "썬",
+     "ex": "My son is tall.",
+     "exKo": "제 아들은 키가 커요."
+    },
+    {
+     "en": "grandchild",
+     "ko": "손주",
+     "pr": "그랜차일드",
+     "ex": "My grandchild is cute.",
+     "exKo": "제 손주는 귀여워요."
+    },
+    {
+     "en": "weather",
+     "ko": "날씨",
+     "pr": "웨더",
+     "ex": "The weather is cold.",
+     "exKo": "날씨가 추워요."
+    }
+   ]
+  }
+ ]
+}

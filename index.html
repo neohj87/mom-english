@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>엄마 영어교실</title>
+<meta name="theme-color" content="#1F5C49">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="영어교실">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&family=Lexend:wght@400;500;600&display=swap">
+<style>
+/* Layout: one phone-width column, big touch targets, bottom tab bar like a real app */
+:root {
+  --bg: #F2F5F1; --surface: #FFFFFF; --ink: #1B2621; --muted: #56655D;
+  --line: #D9E1DB; --primary: #1F5C49; --primary-ink: #FFFFFF; --soft: #E3EEE8;
+  --accent: #E39B2F; --accent-soft: #FBEBD2; --good: #2E7D4F; --bad: #C2453A;
+  --f-display: "Jua", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-en: "Lexend", "Segoe UI", system-ui, sans-serif;
+  --scale: 1; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #101915; --surface: #18241E; --ink: #E8F0EB; --muted: #9EB2A7;
+  --line: #2A3A32; --primary: #6CC2A2; --primary-ink: #0E1A15; --soft: #20332A;
+  --accent: #F0B65A; --accent-soft: #3A2E1A; --good: #6FCF97; --bad: #F08A80; color-scheme: dark } }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: calc(18px * var(--scale)); line-height: 1.6; -webkit-text-size-adjust: 100%; }
+[hidden] { display: none !important; }
+.app { max-width: 560px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: calc(16px + env(safe-area-inset-top, 0px)) calc(110px + env(safe-area-inset-bottom, 0px)); }
+button { font: inherit; color: inherit; cursor: pointer; border: none; background: none; -webkit-tap-highlight-color: transparent; }
+button:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.brand { font-family: var(--f-display); font-size: 1.5em; color: var(--primary); line-height: 1.2; }
+.tools { display: flex; gap: 8px; }
+.tool { min-height: 44px; padding: 6px 14px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--line); font-size: .85em; }
+.tool[aria-pressed="true"] { background: var(--soft); border-color: var(--primary); color: var(--primary); }
+
+h2 { font-family: var(--f-display); font-weight: 400; font-size: 1.35em; margin: 0 0 4px; text-wrap: balance; }
+h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.1em; margin: 22px 0 10px; color: var(--primary); }
+.sub { color: var(--muted); margin: 0 0 16px; }
+.stack { display: grid; gap: 14px; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+.stat { background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 8px; text-align: center; }
+.stat b { display: block; font-family: var(--f-en); font-size: 1.6em; font-weight: 600; color: var(--primary); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.stat span { font-size: .8em; color: var(--muted); }
+
+.hero { background: var(--primary); color: var(--primary-ink); border-radius: 24px; padding: 22px 20px; display: grid; gap: 10px; }
+.hero .eyebrow { font-size: .85em; opacity: .9; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.hero .title { font-family: var(--f-display); font-size: 1.7em; line-height: 1.25; text-wrap: balance; }
+.hero .preview { font-family: var(--f-en); font-size: 1.1em; opacity: .92; }
+.hero .btn { background: var(--primary-ink); color: var(--primary); }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: .8em; background: var(--accent); color: #2A1A00; font-family: var(--f-display); }
+.pill.soft { background: var(--soft); color: var(--primary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 10px 20px; border-radius: 14px; font-family: var(--f-display); font-size: 1.05em; background: var(--primary); color: var(--primary-ink); }
+.btn.ghost { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); }
+.btn.wide { width: 100%; }
+.btn svg { width: 1.2em; height: 1.2em; flex: none; }
+.btn.done { background: var(--accent); color: #2A1A00; }
+.back { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: var(--muted); margin-bottom: 6px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: start; }
+.card .en { font-family: var(--f-en); font-weight: 500; font-size: 1.2em; line-height: 1.35; min-width: 0; overflow-wrap: anywhere; }
+.card .pr { color: var(--accent); font-size: .95em; grid-column: 1; }
+.card .ko { color: var(--muted); grid-column: 1; }
+.card .acts { grid-column: 2; grid-row: 1 / span 4; display: flex; flex-direction: column; gap: 8px; }
+.icon-btn { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); color: var(--primary); }
+.icon-btn svg { width: 26px; height: 26px; }
+.icon-btn.slow { font-family: var(--f-display); font-size: .8em; line-height: 1.1; }
+
+.lesson-row { width: 100%; text-align: left; background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; }
+.lesson-row .num { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--soft); color: var(--primary); font-family: var(--f-en); font-weight: 600; font-variant-numeric: tabular-nums; }
+.lesson-row.done .num { background: var(--accent); color: #2A1A00; }
+.lesson-row.next { border-color: var(--primary); border-width: 2px; }
+.lesson-row .t { font-family: var(--f-display); font-size: 1.05em; line-height: 1.3; }
+.lesson-row .m { font-size: .82em; color: var(--muted); }
+.lesson-row .state { font-size: .85em; color: var(--muted); white-space: nowrap; }
+.levelbar { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+
+.flash { perspective: 1200px; cursor: pointer; }
+.flash-inner { position: relative; min-height: 290px; transition: transform .45s ease; transform-style: preserve-3d; }
+.flash.flipped .flash-inner { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 24px; display: grid; place-items: center; align-content: center; gap: 10px; padding: 24px; text-align: center; border: 1.5px solid var(--line); background: var(--surface); }
+.face.back { transform: rotateY(180deg); background: var(--soft); border-color: var(--primary); }
+.face .word { font-family: var(--f-en); font-weight: 600; font-size: 2.4em; line-height: 1.15; overflow-wrap: anywhere; }
+.face .meaning { font-family: var(--f-display); font-size: 2em; color: var(--primary); line-height: 1.2; }
+.face .hint { color: var(--muted); font-size: .9em; }
+.face .ex { font-family: var(--f-en); font-size: 1.05em; }
+.progress { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .9em; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.bar { height: 10px; border-radius: 99px; background: var(--line); overflow: hidden; margin-bottom: 16px; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; transition: width .3s; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.q { background: var(--surface); border: 1.5px solid var(--line); border-radius: 22px; padding: 20px; display: grid; gap: 12px; margin-bottom: 14px; }
+.q .prompt { font-size: 1.3em; font-family: var(--f-display); text-wrap: balance; }
+.q .prompt.en { font-family: var(--f-en); font-weight: 500; }
+.opt { text-align: left; min-height: 56px; padding: 12px 16px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); line-height: 1.35; }
+.opt.en { font-family: var(--f-en); }
+.opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, var(--surface)); }
+.opt:disabled { cursor: default; color: var(--ink); }
+.feedback { font-family: var(--f-display); font-size: 1.15em; min-height: 1.6em; }
+.feedback.ok { color: var(--good); } .feedback.no { color: var(--bad); }
+.result { text-align: center; padding: 28px 20px; }
+.result .big { font-family: var(--f-en); font-size: 3.4em; font-weight: 600; color: var(--primary); line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.notice { background: var(--accent-soft); border-radius: 14px; padding: 12px 14px; font-size: .9em; margin-bottom: 14px; }
+.empty { text-align: center; color: var(--muted); padding: 40px 10px; }
+
+nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--surface); border-top: 1.5px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+nav.tabs .in { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+nav.tabs button { min-height: 72px; display: grid; place-items: center; align-content: center; gap: 2px; font-family: var(--f-display); font-size: 17px; color: var(--muted); }
+nav.tabs svg { width: 28px; height: 28px; }
+nav.tabs button[aria-current="page"] { color: var(--primary); }
+
+.no-pr .pr { display: none; }
+.toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 99px; font-family: var(--f-display); opacity: 0; transition: opacity .25s; pointer-events: none; z-index: 9; white-space: nowrap; }
+.toast.show { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">엄마 영어교실</div>
+    <div class="tools">
+      <button class="tool" id="t-pr" aria-pressed="true">한글 발음</button>
+      <button class="tool" id="t-size">글자 크게</button>
+    </div>
+  </header>
+  <main id="view"><p class="empty">수업을 불러오는 중이에요…</p></main>
+</div>
+
+<nav class="tabs" aria-label="메뉴"><div class="in">
+  <button data-tab="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>오늘</button>
+  <button data-tab="lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h12"/><path d="M8 7h6M8 11h6"/></svg>수업</button>
+  <button data-tab="words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="16" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>단어</button>
+  <button data-tab="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>퀴즈</button>
+</div></nav>
+<div class="toast" id="toast"></div>
+
+<script>
+const ICON_SPEAK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const view = document.getElementById("view");
+let LESSONS = [], CUR = null;
+
+/* ---------- 저장 (이 휴대폰에만) ---------- */
+const KEY = "mom-english-v2";
+let S = { done: {}, known: {}, streak: 0, last: "", best: 0, pr: true, size: 1 };
+try { Object.assign(S, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+const kst = (d = new Date()) => new Date(d.getTime() + 9 * 3600e3).toISOString().slice(0, 10);
+function markStudied() {
+  const today = kst();
+  if (S.last === today) return;
+  S.streak = S.last === kst(new Date(Date.now() - 86400e3)) ? S.streak + 1 : 1;
+  S.last = today; save();
+}
+function streakNow() { return (S.last === kst() || S.last === kst(new Date(Date.now() - 86400e3))) ? S.streak : 0; }
+
+/* ---------- 소리 ---------- */
+const canSpeak = "speechSynthesis" in window;
+let voice = null;
+function pickVoice() {
+  const vs = speechSynthesis.getVoices();
+  voice = vs.find(v => /en-US/i.test(v.lang) && /Samantha|Google US|Aria|Jenny/i.test(v.name)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null;
+}
+if (canSpeak) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(text, slow) {
+  if (!canSpeak) { toast("이 기기에서는 소리가 나오지 않아요"); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; if (voice) u.voice = voice;
+  u.rate = slow ? 0.6 : 0.9;
+  speechSynthesis.speak(u);
+}
+
+let toastT;
+function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1700); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const nextLesson = () => LESSONS.find(l => !S.done[l.id]);
+const lessonNo = l => LESSONS.indexOf(l) + 1;
+const isNew = l => l.date >= kst(new Date(Date.now() - 86400e3)) && !S.done[l.id];
+const levelName = lv => CUR?.levels?.[lv]?.name || "";
+function sayButtons(en) {
+  return `<button class="icon-btn" data-say="${esc(en)}" aria-label="듣기">${ICON_SPEAK}</button>
+          <button class="icon-btn slow" data-say="${esc(en)}" data-slow="1" aria-label="천천히 듣기">천천히</button>`;
+}
+
+/* ---------- 오늘 ---------- */
+function renderToday() {
+  const nx = nextLesson();
+  const doneN = Object.keys(S.done).filter(id => LESSONS.some(l => l.id === id)).length;
+  const knownN = Object.keys(S.known).length;
+  const h = new Date().getHours();
+  const hello = h < 12 ? "좋은 아침이에요, 엄마!" : h < 18 ? "오늘도 한 수업 해볼까요?" : "오늘 하루도 수고했어요, 엄마!";
+  const newN = LESSONS.filter(isNew).length;
+  view.innerHTML = `
+    <h2>${hello}</h2>
+    <p class="sub">매일 새 수업이 하나씩 추가돼요. 천천히, 엄마 속도대로 해요.</p>
+    <div class="stats">
+      <div class="stat"><b>${streakNow()}</b><span>일째 공부 중</span></div>
+      <div class="stat"><b>${doneN}</b><span>마친 수업</span></div>
+      <div class="stat"><b>${knownN}</b><span>아는 단어</span></div>
+    </div>
+    ${canSpeak ? "" : '<div class="notice">이 브라우저에서는 영어 소리가 나오지 않아요. 크롬이나 사파리에서 열어 주세요.</div>'}
+    ${nx ? `
+    <section class="hero">
+      <div class="eyebrow"><span>${lessonNo(nx)}번째 수업 · ${nx.step}단계 ${esc(nx.topic)}</span>${isNew(nx) ? '<span class="pill">새 수업</span>' : ""}</div>
+      <div class="title">${esc(nx.title)}</div>
+      <div class="preview">“${esc(nx.sentences[0].en)}”</div>
+      <div>문장 ${nx.sentences.length}개 · 단어 ${nx.words.length}개</div>
+      <button class="btn wide" data-open="${nx.id}">수업 시작하기</button>
+    </section>` : `
+    <section class="hero">
+      <div class="title">모든 수업을 마쳤어요!</div>
+      <div>내일 새 수업이 올라와요. 오늘은 퀴즈로 복습해 볼까요?</div>
+      <button class="btn wide" data-go="quiz">복습 퀴즈 풀기</button>
+    </section>`}
+    <div class="stack" style="margin-top:14px">
+      ${newN > 1 ? `<div class="notice">아직 안 한 새 수업이 ${newN}개 있어요.</div>` : ""}
+      <button class="btn wide ghost" data-go="quiz">퀴즈로 복습하기</button>
+    </div>`;
+}
+
+/* ---------- 수업 목록 ---------- */
+function renderLessons() {
+  const nx = nextLesson();
+  const byLevel = {};
+  LESSONS.forEach(l => (byLevel[l.level] ||= []).push(l));
+  view.innerHTML = `
+    <h2>전체 수업</h2>
+    <p class="sub">수업 ${LESSONS.length}개 · ${CUR ? CUR.steps.length + "단계 과정" : ""}. 아무 수업이나 눌러서 다시 볼 수 있어요.</p>
+    ${Object.keys(byLevel).sort().map(lv => {
+      const ls = byLevel[lv], d = ls.filter(l => S.done[l.id]).length;
+      return `<div class="levelbar"><h3>레벨 ${lv} · ${esc(levelName(lv))}</h3><span class="sub" style="margin:0">${d} / ${ls.length}</span></div>
+      <div class="stack">${ls.map(l => `
+        <button class="lesson-row ${S.done[l.id] ? "done" : ""} ${l === nx ? "next" : ""}" data-open="${l.id}">
+          <span class="num">${lessonNo(l)}</span>
+          <span><span class="t">${esc(l.title)}</span><br><span class="m">${l.step}단계 ${esc(l.topic)} · ${l.date.slice(5).replace("-", "/")}</span></span>
+          <span class="state">${S.done[l.id] ? "완료" : l === nx ? "다음 수업" : isNew(l) ? '<span class="pill">새</span>' : ""}</span>
+        </button>`).join("")}
+      </div>`;
+    }).join("")}`;
+}
+
+/* ---------- 수업 하나 ---------- */
+function renderLesson(id) {
+  const l = LESSONS.find(x => x.id === id);
+  if (!l) return go("lessons");
+  view.innerHTML = `
+    <button class="back" data-go="lessons">‹ 전체 수업</button>
+    <h2>${esc(l.title)}</h2>
+    <p class="sub">${lessonNo(l)}번째 수업 · ${l.step}단계 ${esc(l.topic)} · 레벨 ${l.level}</p>
+    <div class="notice">스피커를 누르고 소리 내어 세 번씩 따라 해 보세요.</div>
+    <h3>오늘의 문장</h3>
+    <div class="stack">${l.sentences.map(s => `
+      <div class="card">
+        <div class="en">${esc(s.en)}</div>
+        <div class="pr">${esc(s.pr)}</div>
+        <div class="ko">${esc(s.ko)}</div>
+        <div class="acts">${sayButtons(s.en)}</div>
+      </div>`).join("")}
+    </div>
+    <h3>오늘의 단어</h3>
+    <div class="stack">${l.words.map(w => `
+      <div class="card">
+        <div class="en">${esc(w.en)} <span style="font-family:var(--f-display);color:var(--primary)">${esc(w.ko)}</span></div>
+        <div class="pr">${esc(w.pr)}</div>
+        <div class="ko">${esc(w.ex)}<br>${esc(w.exKo)}</div>
+        <div class="acts"><button class="icon-btn" data-say="${esc(w.en)}" aria-label="듣기">${ICON_SPEAK}</button><button class="icon-btn slow" data-say="${esc(w.ex)}" aria-label="예문 듣기">예문</button></div>
+      </div>`).join("")}
+    </div>
+    <div class="stack" style="margin-top:20px">
+      ${S.done[l.id]
+        ? `<button class="btn wide done" disabled>이 수업은 마쳤어요</button><button class="btn wide ghost" data-quiz="${l.id}">이 수업 퀴즈 풀기</button>`
+        : `<button class="btn wide" id="finish">수업 다 했어요</button>`}
+    </div>`;
+  const f = document.getElementById("finish");
+  if (f) f.onclick = () => {
+    S.done[l.id] = kst(); markStudied(); save();
+    toast("잘했어요! 퀴즈로 확인해 봐요");
+    startQuiz(l.id);
+  };
+}
+
+/* ---------- 단어 카드 ---------- */
+let deck = [], deckI = 0;
+function wordPool() {
+  const nx = nextLesson();
+  const ls = LESSONS.filter(l => S.done[l.id] || l === nx);
+  return ls.flatMap(l => l.words);
+}
+function newDeck() { const pool = wordPool(); const unknown = pool.filter(w => !S.known[w.en]); deck = shuffle(unknown.length ? unknown : pool); deckI = 0; }
+function renderWords() {
+  const pool = wordPool();
+  if (!pool.length) { view.innerHTML = '<h2>단어 카드</h2><p class="empty">수업을 시작하면 단어가 여기 모여요.</p>'; return; }
+  if (!deck.length || deckI >= deck.length) newDeck();
+  const w = deck[deckI];
+  const knownN = pool.filter(x => S.known[x.en]).length;
+  view.innerHTML = `
+    <h2>단어 카드</h2>
+    <p class="sub">지금까지 배운 단어예요. 카드를 누르면 뜻이 나와요.</p>
+    <div class="progress"><span>${deckI + 1} / ${deck.length}번째 카드</span><span>아는 단어 ${knownN} / ${pool.length}</span></div>
+    <div class="bar"><i style="width:${(knownN / pool.length) * 100}%"></i></div>
+    <div class="flash" id="flash" role="button" tabindex="0" aria-label="카드 뒤집기">
+      <div class="flash-inner">
+        <div class="face front">
+          <div class="word">${esc(w.en)}</div>
+          <div class="hint pr">${esc(w.pr)}</div>
+          <div class="hint">눌러서 뜻 보기</div>
+        </div>
+        <div class="face back">
+          <div class="meaning">${esc(w.ko)}</div>
+          <div class="ex">${esc(w.ex)}</div>
+          <div class="hint">${esc(w.exKo)}</div>
+        </div>
+      </div>
+    </div>
+    <div class="stack" style="margin-top:14px">
+      <button class="btn wide ghost" data-say="${esc(w.en)}">${ICON_SPEAK} 단어 듣기</button>
+      <div class="pair">
+        <button class="btn ghost" id="w-again">다시 볼래요</button>
+        <button class="btn" id="w-know">알아요</button>
+      </div>
+    </div>`;
+  const f = document.getElementById("flash");
+  const flip = () => { f.classList.toggle("flipped"); if (f.classList.contains("flipped")) speak(w.ex); };
+  f.onclick = flip; f.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } };
+  document.getElementById("w-again").onclick = () => { deck.push(w); deckI++; renderWords(); };
+  document.getElementById("w-know").onclick = () => {
+    S.known[w.en] = true; markStudied(); save(); deckI++;
+    if (deckI >= deck.length) { toast("카드를 다 봤어요!"); newDeck(); }
+    renderWords();
+  };
+}
+
+/* ---------- 퀴즈 ---------- */
+let Q = null;
+function startQuiz(lessonId) { Q = makeQuiz(lessonId); go("quiz", true); }
+function makeQuiz(lessonId) {
+  const all = LESSONS.flatMap(l => l.sentences.map(s => ({ ...s, lid: l.id })));
+  let pool;
+  if (lessonId) pool = all.filter(s => s.lid === lessonId);
+  else {
+    const doneIds = new Set(Object.keys(S.done));
+    pool = all.filter(s => doneIds.has(s.lid));
+    if (pool.length < 4) { const nx = nextLesson() || LESSONS[0]; pool = pool.concat(all.filter(s => s.lid === nx.id)); }
+  }
+  const qs = shuffle(pool).slice(0, lessonId ? 6 : 10).map((s, i) => {
+    const others = shuffle(all.filter(x => x.en !== s.en && x.ko !== s.ko)).slice(0, 3);
+    return { s, type: i % 3, opts: shuffle([s, ...others]) };
+  });
+  return { qs, i: 0, score: 0, answered: false, lessonId };
+}
+function renderQuiz() {
+  if (!Q) Q = makeQuiz();
+  if (Q.i >= Q.qs.length) return renderResult();
+  const { s, type, opts } = Q.qs[Q.i];
+  const prompt = type === 0 ? `<div class="prompt">“${esc(s.ko)}”<br>영어로 어떻게 말할까요?</div>`
+    : type === 1 ? `<div class="prompt en">${esc(s.en)}</div><div class="sub" style="margin:0">무슨 뜻일까요?</div>`
+    : `<div class="prompt">잘 듣고 뜻을 골라 보세요</div><button class="btn ghost" data-say="${esc(s.en)}">${ICON_SPEAK} 다시 듣기</button>`;
+  const optEn = type === 0;
+  view.innerHTML = `
+    <h2>${Q.lessonId ? "수업 퀴즈" : "복습 퀴즈"}</h2>
+    <div class="progress"><span>${Q.i + 1} / ${Q.qs.length} 문제</span><span>맞힌 개수 ${Q.score}</span></div>
+    <div class="bar"><i style="width:${(Q.i / Q.qs.length) * 100}%"></i></div>
+    <section class="q">
+      ${prompt}
+      ${opts.map((o, k) => `<button class="opt ${optEn ? "en" : ""}" data-ans="${k}">${esc(optEn ? o.en : o.ko)}</button>`).join("")}
+      <div class="feedback" id="fb" aria-live="polite"></div>
+    </section>
+    <button class="btn wide" id="next" hidden>다음 문제</button>`;
+  if (type === 2) setTimeout(() => speak(s.en), 300);
+  view.querySelectorAll("[data-ans]").forEach(b => b.onclick = () => {
+    if (Q.answered) return; Q.answered = true;
+    const ok = opts[+b.dataset.ans] === s;
+    if (ok) Q.score++;
+    view.querySelectorAll("[data-ans]").forEach(x => { x.disabled = true; if (opts[+x.dataset.ans] === s) x.classList.add("right"); });
+    if (!ok) b.classList.add("wrong");
+    const fb = document.getElementById("fb");
+    fb.className = "feedback " + (ok ? "ok" : "no");
+    fb.textContent = ok ? "정답이에요! 잘했어요" : `아쉬워요. 정답은 “${s.en}”`;
+    speak(s.en);
+    const nx = document.getElementById("next"); nx.hidden = false; nx.focus();
+    nx.onclick = () => { Q.i++; Q.answered = false; renderQuiz(); };
+  });
+}
+function renderResult() {
+  const sc = Q.score, n = Q.qs.length;
+  markStudied();
+  if (!Q.lessonId && sc > S.best) { S.best = sc; save(); }
+  const msg = sc === n ? "만점이에요! 정말 대단해요" : sc >= n * .7 ? "아주 잘했어요!" : sc >= n * .4 ? "좋아요, 조금만 더 해봐요" : "괜찮아요, 다시 하면 더 잘할 거예요";
+  view.innerHTML = `
+    <h2>퀴즈 결과</h2>
+    <section class="q result">
+      <div class="big">${sc} / ${n}</div>
+      <div class="prompt">${msg}</div>
+      ${Q.lessonId ? "" : `<div class="sub" style="margin:0">최고 기록 ${S.best} / 10</div>`}
+    </section>
+    <div class="stack">
+      ${nextLesson() ? `<button class="btn wide" data-go="today">다음 수업 보러 가기</button>` : ""}
+      <button class="btn wide ghost" id="again">복습 퀴즈 새로 풀기</button>
+    </div>`;
+  document.getElementById("again").onclick = () => { Q = makeQuiz(); renderQuiz(); };
+}
+
+/* ---------- 화면 이동 ---------- */
+const R = { today: renderToday, lessons: renderLessons, words: renderWords, quiz: renderQuiz };
+function go(t, keepQuiz) {
+  if (t === "quiz" && !keepQuiz && Q && Q.i >= Q.qs.length) Q = null;
+  document.querySelectorAll("nav.tabs button").forEach(b => { if (b.dataset.tab === t) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  if (canSpeak) speechSynthesis.cancel();
+  R[t](); window.scrollTo(0, 0);
+}
+function openLesson(id) {
+  document.querySelectorAll("nav.tabs button").forEach(b => { if (b.dataset.tab === "lessons") b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  renderLesson(id); window.scrollTo(0, 0);
+}
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go(b.dataset.tab));
+view.addEventListener("click", e => {
+  const say = e.target.closest("[data-say]");
+  if (say) { e.stopPropagation(); speak(say.dataset.say, !!say.dataset.slow); return; }
+  const op = e.target.closest("[data-open]"); if (op) return openLesson(op.dataset.open);
+  const qz = e.target.closest("[data-quiz]"); if (qz) return startQuiz(qz.dataset.quiz);
+  const g = e.target.closest("[data-go]"); if (g) go(g.dataset.go);
+});
+
+/* ---------- 설정 ---------- */
+const SIZES = [1, 1.15, 1.3];
+function applyPrefs() {
+  document.documentElement.style.setProperty("--scale", S.size);
+  document.body.classList.toggle("no-pr", !S.pr);
+  document.getElementById("t-pr").setAttribute("aria-pressed", S.pr);
+  document.getElementById("t-size").textContent = S.size >= 1.3 ? "글자 보통" : "글자 크게";
+}
+document.getElementById("t-pr").onclick = () => { S.pr = !S.pr; save(); applyPrefs(); toast(S.pr ? "한글 발음을 보여줘요" : "한글 발음을 숨겨요"); };
+document.getElementById("t-size").onclick = () => { const i = SIZES.indexOf(S.size); S.size = SIZES[(i + 1) % SIZES.length]; save(); applyPrefs(); };
+applyPrefs();
+
+/* ---------- 수업 불러오기 (오프라인이면 마지막으로 받은 수업 사용) ---------- */
+async function load() {
+  try {
+    const [les, cur] = await Promise.all([
+      fetch("data/lessons.json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); }),
+      fetch("data/curriculum.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
+    ]);
+    LESSONS = les.lessons; CUR = cur;
+    try { localStorage.setItem(KEY + "-cache", JSON.stringify({ les, cur })); } catch (e) {}
+  } catch (e) {
+    try { const c = JSON.parse(localStorage.getItem(KEY + "-cache")); LESSONS = c.les.lessons; CUR = c.cur; toast("인터넷이 안 돼서 저장된 수업을 보여줘요"); } catch (e2) {}
+  }
+  if (!LESSONS.length) { view.innerHTML = '<p class="empty">수업을 불러오지 못했어요.<br>인터넷 연결을 확인하고 다시 열어 주세요.</p>'; return; }
+  go("today");
+}
+load();
+</script>
+</body>
+</html>
