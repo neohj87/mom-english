@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "lessons": [
   {
    "id": "L001",
@@ -614,6 +614,83 @@
      "pr": "미닛",
      "ex": "Wait a minute.",
      "exKo": "잠시만 기다려주세요."
+    }
+   ]
+  },
+  {
+   "id": "L009",
+   "step": 9,
+   "level": 1,
+   "topic": "날씨와 계절",
+   "date": "2026-11-16",
+   "title": "날씨와 사계절",
+   "sentences": [
+    {
+     "en": "It is very cold.",
+     "ko": "너무 추워요.",
+     "pr": "이츠 베리 콜드."
+    },
+    {
+     "en": "It is hot outside.",
+     "ko": "밖이 더워요.",
+     "pr": "이츠 핫 아웃사이드."
+    },
+    {
+     "en": "I love the spring.",
+     "ko": "저는 봄을 정말 좋아해요.",
+     "pr": "아이 러브 더 스프링."
+    },
+    {
+     "en": "It is raining now.",
+     "ko": "지금 비가 와요.",
+     "pr": "이츠 레이닝 나우."
+    },
+    {
+     "en": "Is it warm there?",
+     "ko": "거기는 따뜻한가요?",
+     "pr": "이즈 잇 웜 데어?"
+    },
+    {
+     "en": "Winter is coming soon.",
+     "ko": "곧 겨울이 와요.",
+     "pr": "윈터 이즈 커밍 순."
+    }
+   ],
+   "words": [
+    {
+     "en": "cold",
+     "ko": "추운",
+     "pr": "콜드",
+     "ex": "It is cold here.",
+     "exKo": "여기는 추워요."
+    },
+    {
+     "en": "hot",
+     "ko": "더운, 뜨거운",
+     "pr": "핫",
+     "ex": "The tea is hot.",
+     "exKo": "차가 뜨거워요."
+    },
+    {
+     "en": "spring",
+     "ko": "봄",
+     "pr": "스프링",
+     "ex": "Spring is very warm.",
+     "exKo": "봄은 정말 따뜻해요."
+    },
+    {
+     "en": "summer",
+     "ko": "여름",
+     "pr": "서머",
+     "ex": "I like the summer.",
+     "exKo": "저는 여름을 좋아해요."
+    },
+    {
+     "en": "warm",
+     "ko": "따뜻한",
+     "pr": "웜",
+     "ex": "It is warm inside.",
+     "exKo": "실내는 따뜻해요."
     }
    ]
   }
