@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "lessons": [
   {
    "id": "L001",
@@ -691,6 +691,83 @@
      "pr": "웜",
      "ex": "It is warm inside.",
      "exKo": "실내는 따뜻해요."
+    }
+   ]
+  },
+  {
+   "id": "L010",
+   "step": 10,
+   "level": 1,
+   "topic": "기분 말하기",
+   "date": "2026-11-17",
+   "title": "오늘의 기분 표현하기",
+   "sentences": [
+    {
+     "en": "I am very happy.",
+     "ko": "저는 정말 행복해요.",
+     "pr": "아이 앰 베리 해피."
+    },
+    {
+     "en": "I am so tired.",
+     "ko": "저는 너무 피곤해요.",
+     "pr": "아이 앰 소 타이어드."
+    },
+    {
+     "en": "Are you hungry now?",
+     "ko": "지금 배고프신가요?",
+     "pr": "아 유 헝그리 나오?"
+    },
+    {
+     "en": "Don't be worried.",
+     "ko": "걱정하지 마세요.",
+     "pr": "돈 비 워리드."
+    },
+    {
+     "en": "I am very excited.",
+     "ko": "저는 정말 신나요.",
+     "pr": "아이 앰 베리 익사이티드."
+    },
+    {
+     "en": "I feel fine now.",
+     "ko": "저는 이제 괜찮아요.",
+     "pr": "아이 필 파인 나오."
+    }
+   ],
+   "words": [
+    {
+     "en": "hungry",
+     "ko": "배고픈",
+     "pr": "헝그리",
+     "ex": "I am hungry.",
+     "exKo": "저는 배고파요."
+    },
+    {
+     "en": "worried",
+     "ko": "걱정하는",
+     "pr": "워리드",
+     "ex": "Do not be worried.",
+     "exKo": "걱정하지 마세요."
+    },
+    {
+     "en": "excited",
+     "ko": "신난",
+     "pr": "익사이티드",
+     "ex": "She is excited.",
+     "exKo": "그녀는 신났어요."
+    },
+    {
+     "en": "sleepy",
+     "ko": "졸린",
+     "pr": "슬리피",
+     "ex": "I am sleepy.",
+     "exKo": "저는 졸려요."
+    },
+    {
+     "en": "fine",
+     "ko": "괜찮은",
+     "pr": "파인",
+     "ex": "I am fine.",
+     "exKo": "저는 괜찮아요."
     }
    ]
   }
