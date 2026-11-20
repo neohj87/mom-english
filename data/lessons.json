@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-20",
  "lessons": [
   {
    "id": "L001",
@@ -768,6 +768,83 @@
      "pr": "파인",
      "ex": "I am fine.",
      "exKo": "저는 괜찮아요."
+    }
+   ]
+  },
+  {
+   "id": "L011",
+   "step": 11,
+   "level": 2,
+   "topic": "자기소개",
+   "date": "2026-11-20",
+   "title": "반가운 자기소개",
+   "sentences": [
+    {
+     "en": "My name is Younghee.",
+     "ko": "제 이름은 영희예요.",
+     "pr": "마이 네임 이즈 영희."
+    },
+    {
+     "en": "I live in Seoul, Korea.",
+     "ko": "저는 한국 서울에 살아요.",
+     "pr": "아이 리브 인 서울, 코리아."
+    },
+    {
+     "en": "I am a homemaker.",
+     "ko": "저는 주부예요.",
+     "pr": "아이 앰 어 홈메이커."
+    },
+    {
+     "en": "I like to grow flowers.",
+     "ko": "저는 꽃 가꾸는 것을 좋아해요.",
+     "pr": "아이 라이크 투 그로우 플라워즈."
+    },
+    {
+     "en": "Where do you live now?",
+     "ko": "지금 어디에 사세요?",
+     "pr": "웨어 두 유 리브 나우?"
+    },
+    {
+     "en": "What is your favorite hobby?",
+     "ko": "가장 좋아하는 취미가 무엇인가요?",
+     "pr": "왓 이즈 유어 페이보릿 하비?"
+    }
+   ],
+   "words": [
+    {
+     "en": "name",
+     "ko": "이름",
+     "pr": "네임",
+     "ex": "What is your name?",
+     "exKo": "이름이 어떻게 되시나요?"
+    },
+    {
+     "en": "live",
+     "ko": "살다",
+     "pr": "리브",
+     "ex": "I live near here.",
+     "exKo": "저는 이 근처에 살아요."
+    },
+    {
+     "en": "hobby",
+     "ko": "취미",
+     "pr": "하비",
+     "ex": "Reading is my hobby.",
+     "exKo": "독서는 제 취미예요."
+    },
+    {
+     "en": "work",
+     "ko": "일하다",
+     "pr": "워크",
+     "ex": "I work at home.",
+     "exKo": "저는 집에서 일해요."
+    },
+    {
+     "en": "flower",
+     "ko": "꽃",
+     "pr": "플라워",
+     "ex": "I like pretty flowers.",
+     "exKo": "저는 예쁜 꽃을 좋아해요."
     }
    ]
   }
