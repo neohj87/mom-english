@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "lessons": [
   {
    "id": "L001",
@@ -845,6 +845,83 @@
      "pr": "플라워",
      "ex": "I like pretty flowers.",
      "exKo": "저는 예쁜 꽃을 좋아해요."
+    }
+   ]
+  },
+  {
+   "id": "L012",
+   "step": 12,
+   "level": 2,
+   "topic": "길 묻기",
+   "date": "2026-11-21",
+   "title": "쉽게 묻는 길 찾기 영어",
+   "sentences": [
+    {
+     "en": "Where is the subway station?",
+     "ko": "지하철역이 어디에 있나요?",
+     "pr": "웨어 이즈 더 서브웨이 스테이션?"
+    },
+    {
+     "en": "Turn left at the corner.",
+     "ko": "모퉁이에서 왼쪽으로 도세요.",
+     "pr": "턴 레프트 앳 더 코너."
+    },
+    {
+     "en": "It is on your right.",
+     "ko": "오른쪽에 있어요.",
+     "pr": "잇 이즈 온 유어 라이트."
+    },
+    {
+     "en": "Is it far from here?",
+     "ko": "여기서 많이 먼가요?",
+     "pr": "이즈 잇 파 프롬 히어?"
+    },
+    {
+     "en": "Can you show me the way?",
+     "ko": "길을 좀 알려주실 수 있나요?",
+     "pr": "캔 유 쇼 미 더 웨이?"
+    },
+    {
+     "en": "Go straight for two blocks.",
+     "ko": "두 블록 똑바로 가세요.",
+     "pr": "고 스트레이트 포 투 블록스."
+    }
+   ],
+   "words": [
+    {
+     "en": "left",
+     "ko": "왼쪽",
+     "pr": "레프트",
+     "ex": "Please turn left here.",
+     "exKo": "여기서 왼쪽으로 도세요."
+    },
+    {
+     "en": "right",
+     "ko": "오른쪽",
+     "pr": "라이트",
+     "ex": "It is on the right.",
+     "exKo": "오른쪽에 있어요."
+    },
+    {
+     "en": "straight",
+     "ko": "똑바로, 곧장",
+     "pr": "스트레이트",
+     "ex": "Please go straight ahead.",
+     "exKo": "앞으로 곧장 가세요."
+    },
+    {
+     "en": "near",
+     "ko": "가까운, 근처에",
+     "pr": "니어",
+     "ex": "Is there a bank near here?",
+     "exKo": "이 근처에 은행이 있나요?"
+    },
+    {
+     "en": "far",
+     "ko": "먼, 멀리",
+     "pr": "파",
+     "ex": "The park is not far.",
+     "exKo": "공원은 멀지 않아요."
     }
    ]
   }
