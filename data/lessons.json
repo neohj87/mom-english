@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "lessons": [
   {
    "id": "L001",
@@ -922,6 +922,83 @@
      "pr": "파",
      "ex": "The park is not far.",
      "exKo": "공원은 멀지 않아요."
+    }
+   ]
+  },
+  {
+   "id": "L013",
+   "step": 13,
+   "level": 2,
+   "topic": "대중교통",
+   "date": "2026-11-22",
+   "title": "대중교통 이용하기",
+   "sentences": [
+    {
+     "en": "Where do I buy a ticket?",
+     "ko": "표는 어디서 사나요?",
+     "pr": "웨어 두 아이 바이 어 티켓?"
+    },
+    {
+     "en": "Does this bus go to City Hall?",
+     "ko": "이 버스가 시청에 가나요?",
+     "pr": "더즈 디스 버스 고 투 시티 홀?"
+    },
+    {
+     "en": "Which stop should I get off?",
+     "ko": "어느 정류장에서 내려야 하나요?",
+     "pr": "위치 스탑 슈드 아이 겟 오프?"
+    },
+    {
+     "en": "I want to take the subway.",
+     "ko": "지하철을 타고 싶어요.",
+     "pr": "아이 원 투 테익 더 서브웨이."
+    },
+    {
+     "en": "How many stops are left?",
+     "ko": "몇 정거장 남았나요?",
+     "pr": "하우 매니 스탑스 아 레프트?"
+    },
+    {
+     "en": "Can you tell me when to get off?",
+     "ko": "언제 내려야 하는지 알려주실 수 있나요?",
+     "pr": "캔 유 텔 미 웬 투 겟 오프?"
+    }
+   ],
+   "words": [
+    {
+     "en": "bus",
+     "ko": "버스",
+     "pr": "버스",
+     "ex": "The bus is coming now.",
+     "exKo": "버스가 지금 오고 있어요."
+    },
+    {
+     "en": "subway",
+     "ko": "지하철",
+     "pr": "서브웨이",
+     "ex": "I like the subway.",
+     "exKo": "저는 지하철을 좋아해요."
+    },
+    {
+     "en": "stop",
+     "ko": "정류장, 멈추다",
+     "pr": "스탑",
+     "ex": "This is our stop.",
+     "exKo": "여기가 우리 정류장이에요."
+    },
+    {
+     "en": "station",
+     "ko": "역",
+     "pr": "스테이션",
+     "ex": "We are at the station.",
+     "exKo": "우리는 역에 있어요."
+    },
+    {
+     "en": "line",
+     "ko": "노선, 호선",
+     "pr": "라인",
+     "ex": "Take line number two.",
+     "exKo": "2호선을 타세요."
     }
    ]
   }
