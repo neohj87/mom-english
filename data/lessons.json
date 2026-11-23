@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "lessons": [
   {
    "id": "L001",
@@ -999,6 +999,83 @@
      "pr": "라인",
      "ex": "Take line number two.",
      "exKo": "2호선을 타세요."
+    }
+   ]
+  },
+  {
+   "id": "L014",
+   "step": 14,
+   "level": 2,
+   "topic": "호텔",
+   "date": "2026-11-23",
+   "title": "호텔에서 체크인하기",
+   "sentences": [
+    {
+     "en": "I want to check in now.",
+     "ko": "지금 체크인하고 싶어요.",
+     "pr": "아이 원트 투 체크 인 나우."
+    },
+    {
+     "en": "Can I get more towels, please?",
+     "ko": "수건을 더 받을 수 있을까요?",
+     "pr": "캔 아이 겟 모어 타월스, 플리즈?"
+    },
+    {
+     "en": "What is the Wi-Fi password?",
+     "ko": "와이파이 비밀번호가 무엇인가요?",
+     "pr": "왓 이즈 더 와이파이 패스워드?"
+    },
+    {
+     "en": "When can I eat breakfast?",
+     "ko": "언제 아침 식사를 할 수 있나요?",
+     "pr": "웬 캔 아이 잇 브렉퍼스트?"
+    },
+    {
+     "en": "Where is the breakfast room?",
+     "ko": "조식 먹는 곳은 어디인가요?",
+     "pr": "웨어 이즈 더 브렉퍼스트 룸?"
+    },
+    {
+     "en": "I had a very nice stay.",
+     "ko": "매우 편안하게 잘 묵었습니다.",
+     "pr": "아이 해드 어 베리 나이스 스태이."
+    }
+   ],
+   "words": [
+    {
+     "en": "hotel",
+     "ko": "호텔",
+     "pr": "호텔",
+     "ex": "This hotel is very clean.",
+     "exKo": "이 호텔은 매우 깨끗해요."
+    },
+    {
+     "en": "towel",
+     "ko": "수건",
+     "pr": "타월",
+     "ex": "I need an extra towel.",
+     "exKo": "저는 수건이 하나 더 필요해요."
+    },
+    {
+     "en": "room",
+     "ko": "방, 객실",
+     "pr": "룸",
+     "ex": "My room is on the third floor.",
+     "exKo": "제 방은 3층에 있어요."
+    },
+    {
+     "en": "breakfast",
+     "ko": "아침 식사",
+     "pr": "브렉퍼스트",
+     "ex": "Breakfast is included in the price.",
+     "exKo": "아침 식사는 요금에 포함되어 있어요."
+    },
+    {
+     "en": "key",
+     "ko": "열쇠",
+     "pr": "키",
+     "ex": "Here is your room key.",
+     "exKo": "여기 당신의 방 열쇠가 있어요."
     }
    ]
   }
