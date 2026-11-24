@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "lessons": [
   {
    "id": "L001",
@@ -1076,6 +1076,83 @@
      "pr": "키",
      "ex": "Here is your room key.",
      "exKo": "여기 당신의 방 열쇠가 있어요."
+    }
+   ]
+  },
+  {
+   "id": "L015",
+   "step": 15,
+   "level": 2,
+   "topic": "식당 심화",
+   "date": "2026-11-24",
+   "title": "식당 심화 표현 배우기",
+   "sentences": [
+    {
+     "en": "I have a reservation at six.",
+     "ko": "여섯 시에 예약했어요.",
+     "pr": "아이 해브 어 레저베이션 앳 식스."
+    },
+    {
+     "en": "What do you recommend here?",
+     "ko": "여기서 무엇을 추천하시나요?",
+     "pr": "왓 두 유 리커멘드 히어?"
+    },
+    {
+     "en": "Is this dish very spicy?",
+     "ko": "이 요리는 많이 매운가요?",
+     "pr": "이즈 디스 디쉬 베리 스파이시?"
+    },
+    {
+     "en": "Please make it not spicy.",
+     "ko": "안 맵게 해주세요.",
+     "pr": "플리즈 메이크 잇 낫 스파이시."
+    },
+    {
+     "en": "I am allergic to nuts.",
+     "ko": "저는 견과류 알레르기가 있어요.",
+     "pr": "아이 암 알러직 투 넛츠."
+    },
+    {
+     "en": "Can we get a table for two?",
+     "ko": "두 명 자리 있을까요?",
+     "pr": "캔 위 게터 테이블 포 투?"
+    }
+   ],
+   "words": [
+    {
+     "en": "reservation",
+     "ko": "예약",
+     "pr": "레저베이션",
+     "ex": "I made a reservation online.",
+     "exKo": "저는 온라인으로 예약했어요."
+    },
+    {
+     "en": "recommend",
+     "ko": "추천하다",
+     "pr": "리커멘드",
+     "ex": "Can you recommend a good dish?",
+     "exKo": "좋은 요리를 추천해 주실 수 있나요?"
+    },
+    {
+     "en": "spicy",
+     "ko": "매운",
+     "pr": "스파이시",
+     "ex": "I like spicy food very much.",
+     "exKo": "저는 매운 음식을 아주 좋아해요."
+    },
+    {
+     "en": "allergic",
+     "ko": "알레르기가 있는",
+     "pr": "알러직",
+     "ex": "She is allergic to milk.",
+     "exKo": "그녀는 우유 알레르기가 있어요."
+    },
+    {
+     "en": "menu",
+     "ko": "메뉴판, 메뉴",
+     "pr": "메뉴",
+     "ex": "Can I see the menu, please?",
+     "exKo": "메뉴판 좀 볼 수 있을까요?"
     }
    ]
   }
