@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "lessons": [
   {
    "id": "L001",
@@ -1153,6 +1153,83 @@
      "pr": "메뉴",
      "ex": "Can I see the menu, please?",
      "exKo": "메뉴판 좀 볼 수 있을까요?"
+    }
+   ]
+  },
+  {
+   "id": "L016",
+   "step": 16,
+   "level": 2,
+   "topic": "마트·시장",
+   "date": "2026-11-25",
+   "title": "마트에서 장보기",
+   "sentences": [
+    {
+     "en": "Where are the fresh apples?",
+     "ko": "신선한 사과는 어디에 있나요?",
+     "pr": "웨어 아 더 프레시 애플스?"
+    },
+    {
+     "en": "I need three tomatoes, please.",
+     "ko": "토마토 세 개 주세요.",
+     "pr": "아이 니드 쓰리 토마토스, 플리즈."
+    },
+    {
+     "en": "Do you have fresh strawberries?",
+     "ko": "신선한 딸기 있나요?",
+     "pr": "두 유 해브 프레시 스트로베리스?"
+    },
+    {
+     "en": "I bought some sweet oranges.",
+     "ko": "저는 달콤한 오렌지를 좀 샀어요.",
+     "pr": "아이 바트 삼 스위트 오렌지스."
+    },
+    {
+     "en": "Can I get a plastic bag?",
+     "ko": "비닐봉지 한 장 주시겠어요?",
+     "pr": "캔 아이 겟 어 플라스틱 백?"
+    },
+    {
+     "en": "How much is one bag of potatoes?",
+     "ko": "감자 한 봉지에 얼마예요?",
+     "pr": "하우 머치 이즈 원 백 오브 포테이토스?"
+    }
+   ],
+   "words": [
+    {
+     "en": "fruit",
+     "ko": "과일",
+     "pr": "프루트",
+     "ex": "I eat fruit every day.",
+     "exKo": "나는 매일 과일을 먹어요."
+    },
+    {
+     "en": "vegetable",
+     "ko": "야채, 채소",
+     "pr": "베지터블",
+     "ex": "I need some green vegetables.",
+     "exKo": "저는 녹색 야채가 필요해요."
+    },
+    {
+     "en": "apple",
+     "ko": "사과",
+     "pr": "애플",
+     "ex": "This red apple is sweet.",
+     "exKo": "이 빨간 사과는 달콤해요."
+    },
+    {
+     "en": "bag",
+     "ko": "봉지, 가방",
+     "pr": "백",
+     "ex": "Please put it in a bag.",
+     "exKo": "봉지에 넣어 주세요."
+    },
+    {
+     "en": "fresh",
+     "ko": "신선한",
+     "pr": "프레시",
+     "ex": "These oranges are very fresh.",
+     "exKo": "이 오렌지들은 아주 신선해요."
     }
    ]
   }
