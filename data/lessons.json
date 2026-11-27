@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "lessons": [
   {
    "id": "L001",
@@ -1307,6 +1307,83 @@
      "pr": "스크린",
      "ex": "I can see the screen.",
      "exKo": "화면이 잘 보여."
+    }
+   ]
+  },
+  {
+   "id": "L018",
+   "step": 18,
+   "level": 2,
+   "topic": "취미",
+   "date": "2026-11-27",
+   "title": "즐거운 나의 취미 생활",
+   "sentences": [
+    {
+     "en": "I go for a walk every day.",
+     "ko": "저는 매일 산책을 해요.",
+     "pr": "아이 고 포 어 웍 에브리 데이."
+    },
+    {
+     "en": "I like cooking simple meals.",
+     "ko": "저는 간단한 요리 만드는 것을 좋아해요.",
+     "pr": "아이 라이크 쿠킹 심플 밀스."
+    },
+    {
+     "en": "I water my plants every morning.",
+     "ko": "저는 매일 아침 식물에 물을 줘요.",
+     "pr": "아이 워터 마이 플랜츠 에브리 모닝."
+    },
+    {
+     "en": "What TV shows do you like?",
+     "ko": "어떤 TV 프로그램을 좋아하세요?",
+     "pr": "왓 티비 쇼즈 두 유 라이크?"
+    },
+    {
+     "en": "I watched a fun drama yesterday.",
+     "ko": "어제 재미있는 드라마를 봤어요.",
+     "pr": "아이 왓치드 어 펀 드라마 예스터데이."
+    },
+    {
+     "en": "Can you teach me this recipe?",
+     "ko": "이 요리법을 가르쳐 주실 수 있나요?",
+     "pr": "캔 유 티치 미 디스 레시피?"
+    }
+   ],
+   "words": [
+    {
+     "en": "walk",
+     "ko": "걷다, 산책하다",
+     "pr": "웍",
+     "ex": "I walk in the park.",
+     "exKo": "저는 공원에서 걸어요."
+    },
+    {
+     "en": "cook",
+     "ko": "요리하다",
+     "pr": "쿡",
+     "ex": "I cook dinner at home.",
+     "exKo": "저는 집에서 저녁을 요리해요."
+    },
+    {
+     "en": "plant",
+     "ko": "식물",
+     "pr": "플랜트",
+     "ex": "I have a small plant.",
+     "exKo": "저는 작은 식물이 있어요."
+    },
+    {
+     "en": "watch",
+     "ko": "보다",
+     "pr": "왓치",
+     "ex": "I watch news at night.",
+     "exKo": "저는 밤에 뉴스를 봐요."
+    },
+    {
+     "en": "recipe",
+     "ko": "요리법, 레시피",
+     "pr": "레시피",
+     "ex": "This recipe is very easy.",
+     "exKo": "이 요리법은 매우 쉬워요."
     }
    ]
   }
