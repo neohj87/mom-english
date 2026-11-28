@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27",
+ "updated": "2026-11-28",
  "lessons": [
   {
    "id": "L001",
@@ -1384,6 +1384,83 @@
      "pr": "레시피",
      "ex": "This recipe is very easy.",
      "exKo": "이 요리법은 매우 쉬워요."
+    }
+   ]
+  },
+  {
+   "id": "L019",
+   "step": 19,
+   "level": 2,
+   "topic": "요리",
+   "date": "2026-11-28",
+   "title": "즐거운 요리 시간",
+   "sentences": [
+    {
+     "en": "I want to try this dish.",
+     "ko": "이 요리를 먹어보고 싶어요.",
+     "pr": "아이 원투 트라이 디스 디쉬."
+    },
+    {
+     "en": "Please cut the onion first.",
+     "ko": "먼저 양파를 잘라 주세요.",
+     "pr": "플리즈 컷 디 언니언 퍼스트."
+    },
+    {
+     "en": "Boil the soup on low heat.",
+     "ko": "약한 불에서 국을 끓이세요.",
+     "pr": "보일 더 수프 온 로우 히트."
+    },
+    {
+     "en": "Mix all the ingredients together now.",
+     "ko": "이제 모든 재료를 함께 섞으세요.",
+     "pr": "믹스 올 디 인그리디언츠 투게더 나우."
+    },
+    {
+     "en": "This soup tastes very sweet.",
+     "ko": "이 국은 아주 단맛이 나요.",
+     "pr": "디스 수프 테이스츠 베리 스윗."
+    },
+    {
+     "en": "Can you add some salt, please?",
+     "ko": "소금 좀 넣어 주시겠어요?",
+     "pr": "캔 유 애드 썸 솔트, 플리즈?"
+    }
+   ],
+   "words": [
+    {
+     "en": "cut",
+     "ko": "자르다",
+     "pr": "컷",
+     "ex": "Cut the bread into small pieces.",
+     "exKo": "빵을 작은 조각으로 잘라 보세요."
+    },
+    {
+     "en": "boil",
+     "ko": "끓이다",
+     "pr": "보일",
+     "ex": "Boil the carrots until soft.",
+     "exKo": "당근이 부드러워질 때까지 끓이세요."
+    },
+    {
+     "en": "mix",
+     "ko": "섞다",
+     "pr": "믹스",
+     "ex": "Mix the butter and sugar well.",
+     "exKo": "버터와 설탕을 잘 섞으세요."
+    },
+    {
+     "en": "salt",
+     "ko": "소금",
+     "pr": "솔트",
+     "ex": "I need more salt for this.",
+     "exKo": "이것에 소금이 더 필요해요."
+    },
+    {
+     "en": "taste",
+     "ko": "맛, 맛이 나다",
+     "pr": "테이스트",
+     "ex": "The soup has a good taste.",
+     "exKo": "그 국은 좋은 맛이 나요."
     }
    ]
   }
